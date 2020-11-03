@@ -5,12 +5,15 @@ script:
   # Connexion à Docker
   - docker login -u $DOCKER_USER -p $DOCKER_PWD
 
-  #Build
-  - docker-compose up
+  # Build
+  - docker build -t $DOCKER_USER/devopstp_2:database database
+  - docker build -t $DOCKER_USER/devopstp_2:httpd httpd
+  - docker build -t $DOCKER_USER/devopstp_2:simple-api simple-api
 
   # Publication des images
-  - docker tag img_docker $DOCKER_USER/devopstp_2
-  - dcoker push $DOCKER_USER/devopstp_2:img_docker
+  - docker push $DOCKER_USER/devopstp_2:database
+  - docker push $DOCKER_USER/devopstp_2:httpd
+  - docker push $DOCKER_USER/devopstp_2:simple-api
 
 cache:
   directories:
