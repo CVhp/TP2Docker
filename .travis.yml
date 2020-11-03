@@ -21,7 +21,7 @@ jobs:
         - docker push $DOCKER_USER/devopstp_2:database
         - docker push $DOCKER_USER/devopstp_2:httpd
         - docker push $DOCKER_USER/devopstp_2:simple-api
-        if: branch = dev
+      if: branch = dev
 
 cache:
   directories:
