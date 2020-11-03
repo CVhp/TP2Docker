@@ -8,11 +8,11 @@ stages:
 
 jobs:
   include:
-    - stage: maven
+    - stage: mavenclean
       name: mavenclean
       script: mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cecilekey
 
-    - stage: connectiondocker
+    - stage: connection
       name: dockerlogin
       script: docker login -u $DOCKER_USER -p $DOCKER_PWD
 
