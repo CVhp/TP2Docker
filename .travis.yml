@@ -1,6 +1,6 @@
 language: java
 script:
-  - mvn clean verify --file ./simple-api/pom.xml
+  
 
   # Connexion à Docker
   - docker login -u $DOCKER_USER -p $DOCKER_PWD
@@ -15,7 +15,7 @@ script:
   - docker push $DOCKER_USER/devopstp_2:httpd
   - docker push $DOCKER_USER/devopstp_2:simple-api
 
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=CVhp_TP2Docker
+  - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=CVhp_TP2Docker --file ./simple-api/pom.xml
 
 addons:
   sonarcloud:
