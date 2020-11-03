@@ -1,4 +1,20 @@
 language: java
 script:
   - mvn clean verify --file ./simple-api/pom.xml
+
+  # Connexion à Docker
   - docker login -u $DOCKER_USER -p $DOCKER_PWD
+
+  #Build
+  - docker-compose up
+
+  # Publication des images
+  - docker tag img_docker $DOCKER_USER/devopstp_2
+  - dcoker push $DOCKER_USER/devopstp_2:img_docker
+
+cache:
+  directories:
+    - $HOME/.m2
+
+services:
+  - docker
