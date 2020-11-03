@@ -2,39 +2,26 @@ language: java
 
 stages:
   - mavenclean
-  - connection
-  - build
-  - push
+  - pushondocker
 
 jobs:
   include:
     - stage: mavenclean
       name: mavenclean
       script: mvn clean verify --file ./simple-api/pom.xml org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=cecilekey
+      if: branch = dev
 
-    - stage: connection
-      name: dockerlogin
-      script: docker login -u $DOCKER_USER -p $DOCKER_PWD
-
-    - stage: build
-      name: build1
-      script: docker build -t $DOCKER_USER/devopstp_2:database database
-
-    - script: docker build -t $DOCKER_USER/devopstp_2:httpd httpd
-      name: build2
-
-    - script: docker build -t $DOCKER_USER/devopstp_2:simple-api simple-api
-      name: build3
-
-    - stage: push
-      name: push1
-      script: docker push $DOCKER_USER/devopstp_2:database
-
-    - script: docker push $DOCKER_USER/devopstp_2:httpd
-      name: push2
-
-    - script: docker push $DOCKER_USER/devopstp_2:simple-api
-      name: push3
+    - stage: pushondocker
+      name: docker
+      script:
+        - docker login -u $DOCKER_USER -p $DOCKER_PWD
+        - docker build -t $DOCKER_USER/devopstp_2:database database
+        - docker build -t $DOCKER_USER/devopstp_2:httpd httpd
+        - docker build -t $DOCKER_USER/devopstp_2:simple-api simple-api
+        - docker push $DOCKER_USER/devopstp_2:database
+        - docker push $DOCKER_USER/devopstp_2:httpd
+        - docker push $DOCKER_USER/devopstp_2:simple-api
+        if: branch = dev
 
 cache:
   directories:
