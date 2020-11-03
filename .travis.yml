@@ -4,7 +4,7 @@ script:
   - cd ./simple-api/
   - mvn clean verify org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=CVhp_TP2Docker
   - cd ..
-    
+
   # Connexion à Docker
   - docker login -u $DOCKER_USER -p $DOCKER_PWD
 
@@ -18,17 +18,15 @@ script:
   - docker push $DOCKER_USER/devopstp_2:httpd
   - docker push $DOCKER_USER/devopstp_2:simple-api
 
-
-
-addons:
-  sonarcloud:
-    organization: "cvhp"
-    token:
-      secure: "$SONARCLOUD_TOKEN"
-
 cache:
   directories:
     - $HOME/.m2
 
 services:
   - docker
+
+addons:
+  sonarcloud:
+    organization: "cvhp"
+    token:
+      secure: "$SONARCLOUD_TOKEN"
