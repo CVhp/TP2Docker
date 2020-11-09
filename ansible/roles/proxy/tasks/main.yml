@@ -2,7 +2,7 @@
   docker_container:
     name: reverse_proxy
     image: cecile98/devopstp_2:httpd
-    state: present
+    state: started
     networks:
       - name: app-network
     ports:

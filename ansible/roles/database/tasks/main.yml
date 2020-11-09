@@ -2,10 +2,10 @@
   docker_container:
     name: database
     image: cecile98/devopstp_2:database
-    state: present
+    state: started
     networks:
       - name: app-network
     env:
-      POSTGRES_PASSWORD=pwd
-      POSTGRES_USER=usr
-      POSTGRES_DB=db
+      POSTGRES_PASSWORD: "{{ db_password }}"
+      POSTGRES_USER: "{{ db_user }}"
+      POSTGRES_DB: db
