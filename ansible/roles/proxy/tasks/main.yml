@@ -1,7 +1,9 @@
 - name: Launch proxy
-  docker_network:
+  docker_container:
     name: reverse_proxy
-    network:
-      - name: "{{app-network}}"
+    image: cecile98/devopstp_2:httpd
+    state: present
+    networks:
+      - name: app-network
     ports:
       - "80:80"

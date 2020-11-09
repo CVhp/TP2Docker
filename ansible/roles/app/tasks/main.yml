@@ -1,5 +1,9 @@
 - name: Launch app
-  docker_network:
+  docker_container:
     name: backend
+    image: cecile98/devopstp_2:simple-api
+    state: present
     networks:
-      - name: "{{app-network}}"
+      - name: app-network
+        links:
+          - database
