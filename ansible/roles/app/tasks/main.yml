@@ -8,4 +8,4 @@
     env:
       SPRING_DATASOURCE_PASSWORD: "{{ db_password }}"
       SPRING_DATASOURCE_USER: "{{ db_user }}"
-      SPRING_DATASOURCE_URL: jbdc:postgresql://database:5432/db
+      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/db
