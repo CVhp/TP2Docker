@@ -1,0 +1,5 @@
+- name: Launch database
+  docker_container:
+    name: database
+    image: cecile98/devopstp_2:database
+    state: present
