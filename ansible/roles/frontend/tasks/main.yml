@@ -1,0 +1,9 @@
+- name: Launch front
+  docker_container:
+    name: frontend
+    image: cecile98/devopstp_2:frontend
+    state: started
+    networks:
+      - name: app-network
+    ports:
+      - "8080:8080"
