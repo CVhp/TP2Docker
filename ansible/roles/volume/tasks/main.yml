@@ -1,0 +1,4 @@
+- name: Get volume
+  docker_volume:
+    name: mydbvolume
+    state: present

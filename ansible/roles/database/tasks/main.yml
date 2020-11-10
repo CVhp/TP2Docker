@@ -6,6 +6,8 @@
     pull: yes
     networks:
       - name: app-network
+    volumes:
+      - mydbvolume:/var/lib/postgresql/data
     env:
       POSTGRES_PASSWORD: "{{ db_password }}"
       POSTGRES_USER: "{{ db_user }}"
