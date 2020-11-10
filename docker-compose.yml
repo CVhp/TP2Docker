@@ -31,8 +31,6 @@ services:
     build: ./frontend
     networks:
       - app-network
-    depends_on:
-      - backend
 
 
 volumes:
