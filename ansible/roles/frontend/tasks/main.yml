@@ -3,5 +3,6 @@
     name: frontend
     image: cecile98/devopstp_2:frontend
     state: started
+    pull: yes
     networks:
       - name: app-network
