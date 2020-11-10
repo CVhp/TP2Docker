@@ -3,6 +3,7 @@
     name: reverse_proxy
     image: cecile98/devopstp_2:httpd
     state: started
+    pull: yes
     networks:
       - name: app-network
     ports:

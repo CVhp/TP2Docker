@@ -8,4 +8,4 @@
     - database
     - app
     - proxy
-    #- frontend
+    - frontend

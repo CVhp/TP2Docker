@@ -3,6 +3,7 @@
     name: backend
     image: cecile98/devopstp_2:simple-api
     state: started
+    pull: yes
     networks:
       - name: app-network
     env:

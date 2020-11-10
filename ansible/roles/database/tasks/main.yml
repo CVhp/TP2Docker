@@ -3,6 +3,7 @@
     name: database
     image: cecile98/devopstp_2:database
     state: started
+    pull: yes
     networks:
       - name: app-network
     env:
